@@ -10,6 +10,8 @@ const {
   deleteUserById,
 } = require("../../controllers/api/users");
 
+const { createNewFriend, deleteFriend } = require("");
+
 router.get("/", getAllUsers);
 router.get("/:Id", getUserById);
 router.post("/", createNewUser);
@@ -21,3 +23,6 @@ router.post("/:userId/friends/:friendId", createNewFriend);
 router.delete("/:userId/friends/:friendId", deleteFriend);
 
 module.exports = router;
+
+//user has a friend
+//thought has a reaction
