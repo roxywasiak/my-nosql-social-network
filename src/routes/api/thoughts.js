@@ -12,7 +12,10 @@ const {
   deleteReactionById,
 } = require("../../controllers/api/thoughts");
 
-const { createNewReaction, deleteReactionById } = require("");
+const {
+  createNewReaction,
+  deleteReactionById,
+} = require("../../controllers/api/reactions");
 
 router.get("/", getAllThoughts);
 router.get("/:id", getThoughtById);

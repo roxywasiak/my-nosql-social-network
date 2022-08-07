@@ -10,15 +10,20 @@ const {
   deleteUserById,
 } = require("../../controllers/api/users");
 
-const { createNewFriend, deleteFriend } = require("");
+const {
+  createNewFriend,
+  deleteFriend,
+} = require("../../controllers/api/friends");
 
 router.get("/", getAllUsers);
 router.get("/:Id", getUserById);
 router.post("/", createNewUser);
 router.put("/:Id", updateUserById);
+
 router.delete("/", deleteUserById);
 //put.friends/ :friendsId
 //del /friends/:friendId
+//will be sub-document in schema
 router.post("/:userId/friends/:friendId", createNewFriend);
 router.delete("/:userId/friends/:friendId", deleteFriend);
 
