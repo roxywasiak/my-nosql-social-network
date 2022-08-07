@@ -11,7 +11,10 @@ const getAllThoughts = async (req, res) => {
 
 const getThoughtById = async (req, res) => {
   try {
-  } catch {}
+    const { thoughtId } = req.params;
+    const thoughts = await Thoughts.findById(thoughtId);
+    return res.json({ success: true, data: thoughts });
+  } catch (error) {}
 };
 
 const createNewThought = async (req, res) => {
