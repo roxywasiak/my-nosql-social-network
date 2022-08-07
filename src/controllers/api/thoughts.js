@@ -2,7 +2,11 @@ const { User, Thoughts } = require("../../models");
 
 const getAllThoughts = async (req, res) => {
   try {
-  } catch {}
+    const thoughts = await Thoughts.find({});
+    return res.json({ success: true, data: thoughts });
+  } catch (error) {
+    console.log(`[Error]: Failed to get all thoughts | ${error.message}`);
+  }
 };
 
 const getThoughtById = async (req, res) => {
