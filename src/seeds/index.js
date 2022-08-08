@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 //import models
-const { User, Thoughts } = require("../models");
+const { Users, Thoughts } = require("../models");
 const users = require("./users.json");
 const thoughts = require("./thoughts.json");
 //init function
@@ -25,8 +25,8 @@ const init = async () => {
     //delete
     //insert
     //users/ thoughts
-    await User.deleteMany({});
-    await User.insertMany(users);
+    await Users.deleteMany({});
+    await Users.insertMany(users);
 
     console.log("[INFO]: Successfully seeded users");
 
@@ -35,7 +35,7 @@ const init = async () => {
 
     console.log("[INFO]: Successfully seeded thoughts");
 
-    const usersFromDb = await User.find({});
+    const usersFromDb = await Users.find({});
     const thoughtsFromDb = await Thoughts.find({});
     //seed thoughts with the users
     const thoughtPromises = thoughtsFromDb.map(async (thought) => {
@@ -44,7 +44,7 @@ const init = async () => {
       const user = usersFromDb.find((user) => user.username === username);
 
       user.thoughts.push(thought._id.toString());
-      await User.findByIdAndUpdate(user._id, { ...user });
+      await users.findByIdAndUpdate(user._id, { ...user });
     });
     await Promise.all(thoughtPromises);
     console.log("[INFO]: Successfully seeded thoughts");
