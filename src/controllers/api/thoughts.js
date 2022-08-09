@@ -1,4 +1,4 @@
-const { User, Thoughts } = require("../../models");
+const { Thoughts } = require("../../models");
 
 const getAllThoughts = async (req, res) => {
   try {
@@ -74,30 +74,6 @@ const deleteThoughtById = async (req, res) => {
   }
 };
 
-const createNewReaction = async (req, res) => {
-  try {
-    const reaction = req.body;
-
-    const { thoughtId } = req.params;
-
-    const thought = await Thoughts.findByIdAndUpdate(thoughtId, {
-      $push: { reactions: reaction },
-    });
-
-    return res.json({ success: true, data: thought });
-  } catch (error) {
-    console.log(`[ERROR]: Failed to create reaction | ${error.message}`);
-    return res
-      .status(500)
-      .json({ success: false, error: "Failed to create reaction" });
-  }
-};
-
-const deleteReactionById = async (req, res) => {
-  try {
-  } catch {}
-};
-
 //createReactionForThought
 //deleteReactionFromThought
 module.exports = {
@@ -106,6 +82,4 @@ module.exports = {
   createNewThought,
   updateThoughtById,
   deleteThoughtById,
-  createNewReaction,
-  deleteReactionById,
 };
