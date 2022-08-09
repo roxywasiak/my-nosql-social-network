@@ -14,27 +14,83 @@ const getThoughtById = async (req, res) => {
     const { thoughtId } = req.params;
     const thoughts = await Thoughts.findById(thoughtId);
     return res.json({ success: true, data: thoughts });
-  } catch (error) {}
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get Thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to get Thought" });
+  }
 };
 
 const createNewThought = async (req, res) => {
   try {
-  } catch {}
+    const { thoughtText, username } = req.body;
+    const newThought = await Thoughts.create({ thoughtText, username });
+    return res.json({ success: true, data: newThought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create Thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create Thought" });
+  }
 };
 
 const updateThoughtById = async (req, res) => {
   try {
-  } catch {}
+    const { thoughtId } = req.params;
+    const data = req.body;
+
+    const updateThought = await Thoughts.findByIdAndUpdate(thoughtId, data);
+
+    if (!updateThought) {
+      return res.json({ success: false, message: "Thought does not exist" });
+    }
+
+    return res.json({ success: true, data: updateThought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create Thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create Thought" });
+  }
 };
 
 const deleteThoughtById = async (req, res) => {
   try {
-  } catch {}
+    const { thoughtId } = req.params;
+
+    const deleteThought = await Thoughts.findByIdAndDelete(thoughtId);
+
+    if (!deleteThought) {
+      return res.json({ success: false, message: "Thought does not exist" });
+    }
+
+    return res.json({ success: true, data: deleteThought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create Thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create Thought" });
+  }
 };
 
 const createNewReaction = async (req, res) => {
   try {
-  } catch {}
+    const reaction = req.body;
+
+    const { thoughtId } = req.params;
+
+    const thought = await Thoughts.findByIdAndUpdate(thoughtId, {
+      $push: { reactions: reaction },
+    });
+
+    return res.json({ success: true, data: thought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create reaction | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create reaction" });
+  }
 };
 
 const deleteReactionById = async (req, res) => {
