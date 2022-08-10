@@ -19,7 +19,7 @@ thoughtsRouter.get("/", getAllThoughts);
 thoughtsRouter.get("/:id", getThoughtById);
 thoughtsRouter.post("/", createNewThought);
 thoughtsRouter.put("/:id", updateThoughtById);
-thoughtsRouter.delete("/:id", deleteThoughtById);
+thoughtsRouter.delete("/:thoughtId", deleteThoughtById);
 //post / reactions
 //del / reaction/:id
 thoughtsRouter.post("/:thoughtId/reaction", createNewReaction);

@@ -58,6 +58,7 @@ const updateThoughtById = async (req, res) => {
 const deleteThoughtById = async (req, res) => {
   try {
     const { thoughtId } = req.params;
+    console.log(thoughtId);
 
     const deleteThought = await Thoughts.findByIdAndDelete(thoughtId);
 
@@ -67,10 +68,10 @@ const deleteThoughtById = async (req, res) => {
 
     return res.json({ success: true, data: deleteThought });
   } catch (error) {
-    console.log(`[ERROR]: Failed to create Thought | ${error.message}`);
+    console.log(`[ERROR]: Failed to delete Thought | ${error.message}`);
     return res
       .status(500)
-      .json({ success: false, error: "Failed to create Thought" });
+      .json({ success: false, error: "Failed to delete Thought" });
   }
 };
 
