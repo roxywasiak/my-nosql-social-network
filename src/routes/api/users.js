@@ -20,7 +20,7 @@ userRouter.get("/:id", getUserById);
 userRouter.post("/", createNewUser);
 userRouter.put("/:id", updateUserById);
 
-userRouter.delete("/", deleteUserById);
+userRouter.delete("/:id", deleteUserById);
 //put.friends/ :friendsId
 //del /friends/:friendId
 //will be sub-document in schema

@@ -1,15 +1,13 @@
-const { User } = require("../../models/User");
+const { User } = require("../../models");
 
 const createNewFriend = async (req, res) => {
   try {
-    const { id } = req.body;
+    const { userId, friendId } = req.params;
 
-    const { userId } = req.params;
-
-    console.log(id, userId);
+    console.log(friendId, userId);
 
     const newFriend = await User.findByIdAndUpdate(userId, {
-      $push: { friends: { _id: id } },
+      $push: { friends: friendId },
     });
 
     return res.json({ success: true, data: newFriend });

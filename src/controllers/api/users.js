@@ -14,7 +14,9 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id);
     const user = await User.findById(id);
+    console.log(user);
     if (!user) {
       return res.status(404).json({ success: false });
     }
