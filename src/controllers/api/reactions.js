@@ -6,9 +6,13 @@ const createNewReaction = async (req, res) => {
 
     const { thoughtId } = req.params;
 
-    const thought = await Thoughts.findByIdAndUpdate(thoughtId, {
-      $push: { reactions: reaction },
-    });
+    const thought = await Thoughts.findByIdAndUpdate(
+      thoughtId,
+      {
+        $push: { reactions: reaction },
+      },
+      { new: true }
+    );
 
     return res.json({ success: true, data: thought });
   } catch (error) {

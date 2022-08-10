@@ -22,7 +22,7 @@ thoughtsRouter.put("/:id", updateThoughtById);
 thoughtsRouter.delete("/:id", deleteThoughtById);
 //post / reactions
 //del / reaction/:id
-thoughtsRouter.post("/:id/reaction", createNewReaction);
+thoughtsRouter.post("/:thoughtId/reaction", createNewReaction);
 thoughtsRouter.delete("/:thoughtId/reaction/:reactionId", deleteReactionById);
 
 module.exports = thoughtsRouter;

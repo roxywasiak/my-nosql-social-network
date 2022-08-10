@@ -6,6 +6,6 @@ const userRouter = require("./api/users");
 const router = Router();
 
 router.use("/api/users", userRouter);
-router.use("/thoughts", thoughtsRouter);
+router.use("/api/thoughts", thoughtsRouter);
 
 module.exports = router;
