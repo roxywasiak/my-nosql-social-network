@@ -12,20 +12,19 @@ An API for a social network web application where users can share their thoughts
 
 # Video link to the project 📽
 
-Watch the video walk-through of the application [CLICK]()
+Watch the video walk-through of the application [CLICK](https://drive.google.com/file/d/1SOkcG77Sy7-o2_nVD5wUheNDhEO7SZzO/view?usp=sharing)
 
 # Installation 🔍
 
 ```
-git clone git@github.com:
-cd
+git clone git@github.com:git@github.com:roxywasiak/my-nosql-social-network.git
+cd my-nosql-social-network
 npm i
 ```
 
 # Launch The Application 🚀
 
 ```
-npm run seed
 npm run start
 ```
 
